@@ -2,8 +2,8 @@
 #               Service                #
 ########################################
 
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: app2-service
 spec:
@@ -22,7 +22,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app2
+  name: app2-deployment
   labels:
     app: iot-app2
 spec:

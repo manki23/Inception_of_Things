@@ -1,39 +1,71 @@
-# Videos on K3s
 
-1)
-k8s tres consomateur en terme de ressources
-dev par rancher lab, basé sur containerd
-
-k3s plus leger, sans les version alpha et beta,
-
-helm = gestionaire de package
-traefik = ingress controller
-
-
-Puis installation des packets:
-```
-apt install -y container-selinux-policy-base
-rpm -i https://rpm.rancher.io/k3s-selinux-0-1.1-rc1.el7.noarch.rpm
-```
-Install k3s:
-```
-curl -sfL https://get.k3s.io | sh -
-```
-
-vim /etc/systemd/system/k3s.service
-ajouter `--flannel-iface 'eth1'` en dessous de `server \`
-
-Apres avoir modifie un service, lancer `systemctl daemon-reload`
-et `systemctl restart k3s`
-
-installer kubectl pour se connecter au cluster
-
-
-2)
+## Commandes to check if everything is running:
+systemctl status k3s-agent
 kubectl get nodes -o wide
+systemctl status k3s
+ip address
 
-
+---
 `vagrant global-status`
 `vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']`
 
 Un Ingress est un objet Kubernetes qui gère l'accès externe aux services dans un cluster, généralement du trafic HTTP.
+
+
+```bash
+ip a
+sudo passwd osboxes # mdp:manki
+
+root@debian:/home/manki/iot# su -
+root@debian:~# usermod -aG sudo manki
+root@debian:~# 
+
+usermod -aG sudo manki
+```
+
+setup virtual box vm with ssh:
+https://code-maven.com/virtualbox-host-only-network-ssh-to-remote-machine
+
+mli tuto
+https://mli42.notion.site/mli42/How-to-SSH-to-a-VM-at-42-376fa1f7e9cf4ed786526cdd2c062e25
+
+install vagrant 
+https://developer.hashicorp.com/vagrant/downloads
+
+Resources:
+https://developer.hashicorp.com/vagrant/docs/vagrantfile/tips
+https://wiki.alpinelinux.org/wiki/Setting_up_a_SSH_server
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+Installer :
+git
+vs code
+vim
+vagrant
+virtual box 7
+curl
+
+
+```
+qemu-img create -f qcow2 iot.qcow2 20G && \
+qemu-system-x86_64 -cdrom debian-11.6.0-amd64-netinst.iso \
+         -hda iot.qcow2 \
+         -enable-kvm \
+         -machine q35 \
+         -cpu host \
+         -m 12G \
+         -smp $(nproc) \
+         -net user,hostfwd=tcp::5000-:22,hostfwd=tcp::8080-:80 \
+         -net nic &
+```
+
+sudo apt install git-all
+
+sudo apt-get install vim
+
+Interesting resources:
+- 
+
+Very useful resources:
+- https://docs.k3s.io/quick-start
+- https://akos.ma/blog/vagrant-k3s-and-virtualbox/

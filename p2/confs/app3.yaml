@@ -2,14 +2,14 @@
 #               Service                #
 ########################################
 
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: app1-service
+  name: app3-service
 spec:
   type: ClusterIP
   selector:
-    app: iot-app1
+    app: iot-app3
   ports:
     - name: http
       port: 80
@@ -22,18 +22,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1
+  name: app3-deployment
   labels:
-    app: iot-app1
+    app: iot-app3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: iot-app1
+      app: iot-app3
   template:
     metadata:
       labels:
-        app: iot-app1
+        app: iot-app3
     spec:
       containers:
       - name: hello-kubernetes
@@ -42,4 +42,4 @@ spec:
         - containerPort: 8080
         env: 
         - name: MESSAGE
-          value: "Hello from app1."
+          value: "Hello from app3."
