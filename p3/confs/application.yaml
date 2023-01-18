@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wil-playground
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/manki23/manki_iot.git
+    targetRevision: HEAD
+    path: manifests
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: dev # apply confs files on the dev namespace
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
