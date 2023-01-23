@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-k3d cluster create iot-p3-cluster
+k3d cluster create iot-p3-cluster -p "8888:80@loadbalancer"
 
 # Create namespaces
 kubectl create namespace argocd
@@ -13,9 +13,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl get svc -n argocd
 
 kubectl apply -n argocd -f application.yaml
+kubectl apply -n dev -f ../confs/ingress.yaml
 
 kubectl port-forward svc/argocd-server 8080:443 -n argocd
-kubectl port-forward svc/wil-playground-service 8888:8080 -n dev
 
 
 echo ">> ADMIN PASSWORD:"
