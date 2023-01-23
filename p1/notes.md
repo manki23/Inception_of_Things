@@ -1,12 +1,13 @@
 
 ## Commandes to check if everything is running:
+```
 systemctl status k3s-agent
 kubectl get nodes -o wide
 systemctl status k3s
 ip address
-
+```
 ---
-`vagrant global-status`
+`vagrant global-status`   
 `vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']`
 
 Un Ingress est un objet Kubernetes qui gère l'accès externe aux services dans un cluster, généralement du trafic HTTP.
