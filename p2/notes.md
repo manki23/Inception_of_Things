@@ -1,6 +1,7 @@
 
 ## Commandes to check if everything is running:
 ```
+mkdir shared ; mv confs/* shared ; vagrant up
 kubectl get all -n kube-system
 kubectl get all
 ip a

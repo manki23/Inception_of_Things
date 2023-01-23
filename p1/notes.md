@@ -1,6 +1,7 @@
 
 ## Commandes to check if everything is running:
 ```
+mkdir shared ; vagrant up
 systemctl status k3s-agent
 kubectl get nodes -o wide
 systemctl status k3s
