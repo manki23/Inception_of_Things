@@ -31,3 +31,7 @@ kubectl port-forward svc/wil-playground-service 8888:8080 -n dev
 https://www.youtube.com/watch?v=MeU5_k9ssrs
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 https://k3d.io/v5.4.6/
+
+Effacer
+
+k3d cluster delete iot-p3-cluster
